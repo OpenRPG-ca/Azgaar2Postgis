@@ -6,6 +6,15 @@ __pycache__/
 # C extensions
 *.so
 
+# data
+*.zip
+*.map
+*.geojson
+*venv
+*.json
+*.csv
+*.log
+
 # Distribution / packaging
 .Python
 build/

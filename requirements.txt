@@ -1,0 +1,5 @@
+svgpathtools
+geojson
+shapely
+tqdm
+python-dotenv
