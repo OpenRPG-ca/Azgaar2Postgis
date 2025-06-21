@@ -494,17 +494,15 @@ ON CONFLICT (id) DO UPDATE
 SET geom = EXCLUDED.geom;
 
 -- Landmass upsert from staging
-INSERT INTO spatial.landmass (id, geom, name, type)
+INSERT INTO spatial.landmass (id, geom, type)
 SELECT
   id,
-  ST_SetSRID(geom, 0), -- ← Forces SRID 0
-  geojsondata->>'name',
+  ST_SetSRID(geom, 0),
   type
 FROM spatial.landmass_staging
 ON CONFLICT (id) DO UPDATE
 SET
   geom = ST_SetSRID(EXCLUDED.geom, 0),
-  name = EXCLUDED.name,
   type = EXCLUDED.type;
 
 -- Cells upsert from staging

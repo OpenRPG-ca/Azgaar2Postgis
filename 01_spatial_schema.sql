@@ -142,7 +142,6 @@ CREATE TABLE
   IF NOT EXISTS spatial.landmass (
     id SERIAL PRIMARY KEY,
     geom geometry (MultiPolygon, 4326),
-    name TEXT,
     type TEXT -- 'landmass' or 'hole'
   );
 

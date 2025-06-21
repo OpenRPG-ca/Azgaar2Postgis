@@ -1,0 +1,957 @@
+2025-06-19 17:38:36,327 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 17:38:56,328 INFO Found zip: /var/www/html/azgaar/openheim.zip
+2025-06-19 17:38:56,388 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 17:38:56,388 INFO Running: psql orpg -U devuser -v ON_ERROR_STOP=1 -f 01_spatial_schema.sql
+2025-06-19 17:38:56,519 INFO DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+SET
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+2025-06-19 17:38:56,519 INFO Running: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+2025-06-19 17:38:56,953 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 17:38:57,434 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 17:38:57,451 INFO Created 21 land features (with freshwater holes).
+2025-06-19 17:38:57,464 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 17:38:57,661 INFO Extracted 1389 river features from SVG.
+2025-06-19 17:38:57,730 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 17:38:59,567 INFO Cleaned and flipped (if needed): /srv/data-loader/data/cells.geojson
+2025-06-19 17:38:59,590 INFO Cleaned and flipped (if needed): /srv/data-loader/data/markers.geojson
+2025-06-19 17:38:59,609 INFO Cleaned and flipped (if needed): /srv/data-loader/data/routes.geojson
+2025-06-19 17:38:59,623 INFO Cleaned and flipped (if needed): /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 17:38:59,632 INFO No change needed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 17:38:59,634 INFO Validation passed: /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 17:38:59,643 INFO Validation passed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 17:38:59,649 INFO Cleaned rivers csv: /srv/data-loader/data/rivers.csv -> /srv/data-loader/data/rivers_cleaned.csv
+2025-06-19 17:38:59,649 INFO Cleaned markers csv: /srv/data-loader/data/markers.csv -> /srv/data-loader/data/markers_cleaned.csv
+2025-06-19 17:38:59,681 INFO 
+2025-06-19 17:38:59,681 INFO Running: bash 03_ogr2ogr_import.sh
+========== Starting ogr2ogr import at Thu Jun 19 05:38:59 PM PDT 2025 ==========
+[INFO] Importing openheim_rivers_cleaned.geojson...
+[INFO] Importing routes.geojson...
+[INFO] Importing cells.geojson...
+[INFO] Importing openheim_land_cleaned.geojson...
+[INFO] Importing openheim_rivers_cleaned.geojson...
+All ogr2ogr imports completed at Thu Jun 19 05:39:01 PM PDT 2025.
+2025-06-19 17:39:01,173 INFO 
+2025-06-19 17:39:01,173 INFO Running: psql orpg -U devuser -v ON_ERROR_STOP=1 -f 04_bulk_attribute_import.sql
+2025-06-19 17:39:01,349 INFO SET
+DROP TABLE
+CREATE TABLE
+COPY 607
+INSERT 0 607
+INSERT 0 607
+INSERT 0 607
+DROP TABLE
+CREATE TABLE
+COPY 6
+INSERT 0 6
+INSERT 0 7
+DROP TABLE
+CREATE TABLE
+COPY 32
+INSERT 0 32
+INSERT 0 32
+DROP TABLE
+CREATE TABLE
+COPY 22
+INSERT 0 22
+INSERT 0 22
+DROP TABLE
+CREATE TABLE
+COPY 3
+INSERT 0 3
+INSERT 0 3
+DROP TABLE
+CREATE TABLE
+COPY 1389
+INSERT 0 1389
+DROP TABLE
+CREATE TABLE
+COPY 595
+INSERT 0 595
+INSERT 0 595
+INSERT 0 21
+INSERT 0 60019
+DROP TABLE
+CREATE TABLE AS
+INSERT 0 0
+2025-06-19 17:39:01,349 INFO All steps completed successfully.
+2025-06-19 17:39:01,350 INFO Archived /var/www/html/azgaar/openheim.zip.
+2025-06-19 17:39:01,365 INFO Updated regular.fileupload with passed/active status, version None
+2025-06-19 17:42:51,190 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 17:43:01,191 INFO Found zip: /var/www/html/azgaar/openheim.zip
+2025-06-19 17:43:01,255 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 17:43:01,255 INFO Running: psql orpg -U devuser -v ON_ERROR_STOP=1 -f 01_spatial_schema.sql
+2025-06-19 17:43:01,346 INFO DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+SET
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+2025-06-19 17:43:01,346 INFO Running: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+2025-06-19 17:43:01,723 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 17:43:02,194 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 17:43:02,211 INFO Created 21 land features (with freshwater holes).
+2025-06-19 17:43:02,224 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 17:43:02,403 INFO Extracted 1389 river features from SVG.
+2025-06-19 17:43:02,474 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 17:43:11,549 INFO ERROR: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1575.54it/s]
+2025-06-19 17:43:11,549 INFO Failed to process /var/www/html/azgaar/openheim.zip: Command failed: ['/home/greg/openrpg-ca/azgaar/venv/bin/python3', '02_extract_and_clean.py']
+2025-06-19 17:43:11,552 INFO Moved failed zip /var/www/html/azgaar/openheim.zip to /srv/data-loader/failed_zips
+2025-06-19 17:43:43,944 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 17:43:53,944 INFO Found zip: /var/www/html/azgaar/openheim.zip
+2025-06-19 17:43:54,002 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 17:43:54,002 INFO Running: psql orpg -U devuser -v ON_ERROR_STOP=1 -f 01_spatial_schema.sql
+2025-06-19 17:43:54,108 INFO DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+SET
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+2025-06-19 17:43:54,108 INFO Running: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+2025-06-19 17:43:54,479 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 17:43:54,945 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 17:43:54,962 INFO Created 21 land features (with freshwater holes).
+2025-06-19 17:43:54,975 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 17:43:55,156 INFO Extracted 1389 river features from SVG.
+2025-06-19 17:43:55,225 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 17:43:55,707 ERROR Fatal error during extract_and_clean execution
+Traceback (most recent call last):
+  File "/home/greg/openrpg-ca/azgaar/02_extract_and_clean.py", line 304, in main
+    clean_file(fname)
+  File "/home/greg/openrpg-ca/azgaar/02_extract_and_clean.py", line 179, in clean_file
+    flip_y_coords_in_feature(feat, SVG_HEIGHT)
+  File "/home/greg/openrpg-ca/azgaar/geom_utils.py", line 55, in flip_y_coords_in_feature
+    geom["coordinates"] = flip_y_recursive(coords, SVG_HEIGHT)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greg/openrpg-ca/azgaar/geom_utils.py", line 14, in flip_y_recursive
+    return [flip_y_recursive(c, SVG_HEIGHT) for c in coords]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greg/openrpg-ca/azgaar/geom_utils.py", line 14, in <listcomp>
+    return [flip_y_recursive(c, SVG_HEIGHT) for c in coords]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greg/openrpg-ca/azgaar/geom_utils.py", line 14, in flip_y_recursive
+    return [flip_y_recursive(c, SVG_HEIGHT) for c in coords]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greg/openrpg-ca/azgaar/geom_utils.py", line 14, in <listcomp>
+    return [flip_y_recursive(c, SVG_HEIGHT) for c in coords]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SystemError: error return without exception set
+2025-06-19 17:43:55,760 INFO ERROR: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1697.41it/s]
+2025-06-19 17:43:55,760 INFO Failed to process /var/www/html/azgaar/openheim.zip: Command failed: ['/home/greg/openrpg-ca/azgaar/venv/bin/python3', '02_extract_and_clean.py']
+2025-06-19 17:43:55,762 INFO Moved failed zip /var/www/html/azgaar/openheim.zip to /srv/data-loader/failed_zips
+2025-06-19 17:44:39,898 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 17:44:49,899 INFO Found zip: /var/www/html/azgaar/openheim.zip
+2025-06-19 17:44:49,959 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 17:44:49,959 INFO Running: psql orpg -U devuser -v ON_ERROR_STOP=1 -f 01_spatial_schema.sql
+2025-06-19 17:44:50,064 INFO DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+SET
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+2025-06-19 17:44:50,064 INFO Running: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+2025-06-19 17:44:50,438 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 17:44:50,909 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 17:44:50,925 INFO Created 21 land features (with freshwater holes).
+2025-06-19 17:44:50,938 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 17:44:51,118 INFO Extracted 1389 river features from SVG.
+2025-06-19 17:44:51,187 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 17:44:59,605 INFO ERROR: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1689.18it/s]
+2025-06-19 17:44:59,605 INFO Failed to process /var/www/html/azgaar/openheim.zip: Command failed: ['/home/greg/openrpg-ca/azgaar/venv/bin/python3', '02_extract_and_clean.py']
+2025-06-19 17:44:59,606 INFO Moved failed zip /var/www/html/azgaar/openheim.zip to /srv/data-loader/failed_zips
+2025-06-19 17:56:39,356 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 17:56:49,356 INFO Found zip: /var/www/html/azgaar/openheim.zip
+2025-06-19 17:56:49,423 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 17:56:49,423 INFO Running: psql orpg -U devuser -v ON_ERROR_STOP=1 -f 01_spatial_schema.sql
+2025-06-19 17:56:49,524 INFO DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+SET
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+2025-06-19 17:56:49,524 INFO Running: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+2025-06-19 17:56:49,920 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 17:56:50,395 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 17:56:50,396 INFO Received 21 land polygons
+2025-06-19 17:56:50,412 INFO Created 21 land features (with freshwater holes).
+2025-06-19 17:56:50,425 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 17:56:50,605 INFO Extracted 1389 river features from SVG.
+2025-06-19 17:56:50,677 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 17:56:52,466 INFO Cleaned and flipped (if needed): /srv/data-loader/data/cells.geojson
+2025-06-19 17:56:52,490 INFO Cleaned and flipped (if needed): /srv/data-loader/data/markers.geojson
+2025-06-19 17:56:52,509 INFO Cleaned and flipped (if needed): /srv/data-loader/data/routes.geojson
+2025-06-19 17:56:52,522 INFO Cleaned and flipped (if needed): /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 17:56:52,531 INFO No change needed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 17:56:52,533 INFO Validation passed: /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 17:56:52,540 INFO Validation passed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 17:56:52,547 INFO Cleaned rivers csv: /srv/data-loader/data/rivers.csv -> /srv/data-loader/data/rivers_cleaned.csv
+2025-06-19 17:56:52,547 INFO Cleaned markers csv: /srv/data-loader/data/markers.csv -> /srv/data-loader/data/markers_cleaned.csv
+2025-06-19 17:56:52,580 INFO 
+2025-06-19 17:56:52,580 INFO Running: bash 03_ogr2ogr_import.sh
+========== Starting ogr2ogr import at Thu Jun 19 05:56:52 PM PDT 2025 ==========
+[INFO] Importing openheim_rivers_cleaned.geojson...
+[INFO] Importing routes.geojson...
+[INFO] Importing cells.geojson...
+[INFO] Importing openheim_land_cleaned.geojson...
+[INFO] Importing openheim_rivers_cleaned.geojson...
+All ogr2ogr imports completed at Thu Jun 19 05:56:54 PM PDT 2025.
+2025-06-19 17:56:54,066 INFO 
+2025-06-19 17:56:54,067 INFO Running: psql orpg -U devuser -v ON_ERROR_STOP=1 -f 04_bulk_attribute_import.sql
+2025-06-19 17:56:54,238 INFO SET
+DROP TABLE
+CREATE TABLE
+COPY 607
+INSERT 0 607
+INSERT 0 607
+INSERT 0 607
+DROP TABLE
+CREATE TABLE
+COPY 6
+INSERT 0 6
+INSERT 0 7
+DROP TABLE
+CREATE TABLE
+COPY 32
+INSERT 0 32
+INSERT 0 32
+DROP TABLE
+CREATE TABLE
+COPY 22
+INSERT 0 22
+INSERT 0 22
+DROP TABLE
+CREATE TABLE
+COPY 3
+INSERT 0 3
+INSERT 0 3
+DROP TABLE
+CREATE TABLE
+COPY 1389
+INSERT 0 1389
+DROP TABLE
+CREATE TABLE
+COPY 595
+INSERT 0 595
+INSERT 0 595
+INSERT 0 21
+INSERT 0 60019
+DROP TABLE
+CREATE TABLE AS
+INSERT 0 0
+2025-06-19 17:56:54,238 INFO All steps completed successfully.
+2025-06-19 17:56:54,240 INFO Archived /var/www/html/azgaar/openheim.zip.
+2025-06-19 17:56:54,253 INFO Updated regular.fileupload with passed/active status, version None
+2025-06-19 18:00:04,259 INFO Found zip: /var/www/html/azgaar/openheim.zip
+2025-06-19 18:00:04,321 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 18:00:04,321 INFO Running: psql orpg -U devuser -v ON_ERROR_STOP=1 -f 01_spatial_schema.sql
+2025-06-19 18:00:04,411 INFO DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+DROP TABLE
+SET
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+2025-06-19 18:00:04,411 INFO Running: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+2025-06-19 18:00:04,825 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 18:00:05,301 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 18:00:05,302 INFO Received 21 land polygons
+2025-06-19 18:00:05,318 INFO Created 21 land features (with freshwater holes).
+2025-06-19 18:00:05,331 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:00:05,509 INFO Extracted 1389 river features from SVG.
+2025-06-19 18:00:05,580 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:00:07,386 INFO Cleaned and flipped (if needed): /srv/data-loader/data/cells.geojson
+2025-06-19 18:00:07,409 INFO Cleaned and flipped (if needed): /srv/data-loader/data/markers.geojson
+2025-06-19 18:00:07,427 INFO Cleaned and flipped (if needed): /srv/data-loader/data/routes.geojson
+2025-06-19 18:00:07,440 INFO Cleaned and flipped (if needed): /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:00:07,448 INFO No change needed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:00:07,450 INFO Validation passed: /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:00:07,458 INFO Validation passed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:00:07,464 INFO Cleaned rivers csv: /srv/data-loader/data/rivers.csv -> /srv/data-loader/data/rivers_cleaned.csv
+2025-06-19 18:00:07,464 INFO Cleaned markers csv: /srv/data-loader/data/markers.csv -> /srv/data-loader/data/markers_cleaned.csv
+2025-06-19 18:00:07,496 INFO 
+2025-06-19 18:00:07,497 INFO Running: bash 03_ogr2ogr_import.sh
+========== Starting ogr2ogr import at Thu Jun 19 06:00:07 PM PDT 2025 ==========
+[INFO] Importing openheim_rivers_cleaned.geojson...
+[INFO] Importing routes.geojson...
+[INFO] Importing cells.geojson...
+[INFO] Importing openheim_land_cleaned.geojson...
+[INFO] Importing openheim_rivers_cleaned.geojson...
+All ogr2ogr imports completed at Thu Jun 19 06:00:08 PM PDT 2025.
+2025-06-19 18:00:08,992 INFO 
+2025-06-19 18:00:08,992 INFO Running: psql orpg -U devuser -v ON_ERROR_STOP=1 -f 04_bulk_attribute_import.sql
+2025-06-19 18:00:09,160 INFO SET
+DROP TABLE
+CREATE TABLE
+COPY 607
+INSERT 0 607
+INSERT 0 607
+INSERT 0 607
+DROP TABLE
+CREATE TABLE
+COPY 6
+INSERT 0 6
+INSERT 0 7
+DROP TABLE
+CREATE TABLE
+COPY 32
+INSERT 0 32
+INSERT 0 32
+DROP TABLE
+CREATE TABLE
+COPY 22
+INSERT 0 22
+INSERT 0 22
+DROP TABLE
+CREATE TABLE
+COPY 3
+INSERT 0 3
+INSERT 0 3
+DROP TABLE
+CREATE TABLE
+COPY 1389
+INSERT 0 1389
+DROP TABLE
+CREATE TABLE
+COPY 595
+INSERT 0 595
+INSERT 0 595
+INSERT 0 21
+INSERT 0 60019
+DROP TABLE
+CREATE TABLE AS
+INSERT 0 0
+2025-06-19 18:00:09,161 INFO All steps completed successfully.
+2025-06-19 18:00:09,161 INFO Archived /var/www/html/azgaar/openheim.zip.
+2025-06-19 18:00:09,174 INFO Updated regular.fileupload with passed/active status, version 0.0.1
+2025-06-19 18:37:12,468 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 18:37:14,469 INFO Renamed to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 18:37:14,469 INFO Found zip: /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 18:37:14,523 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 18:37:15,012 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 18:37:15,487 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 18:37:15,489 INFO Received 21 land polygons
+2025-06-19 18:37:15,504 INFO Created 21 land features (with freshwater holes).
+2025-06-19 18:37:15,518 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:37:15,701 INFO Extracted 1389 river features from SVG.
+2025-06-19 18:37:15,771 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:37:17,552 INFO Cleaned and flipped (if needed): /srv/data-loader/data/cells.geojson
+2025-06-19 18:37:17,574 INFO Cleaned and flipped (if needed): /srv/data-loader/data/markers.geojson
+2025-06-19 18:37:17,593 INFO Cleaned and flipped (if needed): /srv/data-loader/data/routes.geojson
+2025-06-19 18:37:17,606 INFO Cleaned and flipped (if needed): /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:37:17,614 INFO No change needed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:37:17,616 INFO Validation passed: /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:37:17,623 INFO Validation passed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:37:17,629 INFO Cleaned rivers csv: /srv/data-loader/data/rivers.csv -> /srv/data-loader/data/rivers_cleaned.csv
+2025-06-19 18:37:17,629 INFO Cleaned markers csv: /srv/data-loader/data/markers.csv -> /srv/data-loader/data/markers_cleaned.csv
+========== Starting ogr2ogr import at Thu Jun 19 06:37:17 PM PDT 2025 ==========
+[INFO] Importing openheim_rivers_cleaned.geojson...
+[INFO] Importing routes.geojson...
+[INFO] Importing cells.geojson...
+03_ogr2ogr_import.sh: line 42: 356337 Segmentation fault      (core dumped) ogr2ogr -f "PostgreSQL" PG:"$PG_DB_URL" "$DATA_DIR/cells.geojson" -nln spatial.cells_geom_staging -overwrite -nlt POLYGON -lco GEOMETRY_NAME=geom -lco SCHEMA=spatial -lco FID=id
+[INFO] Importing openheim_land_cleaned.geojson...
+[INFO] Importing openheim_rivers_cleaned.geojson...
+All ogr2ogr imports completed at Thu Jun 19 06:37:18 PM PDT 2025.
+2025-06-19 18:37:19,046 INFO All steps completed successfully.
+2025-06-19 18:37:19,046 INFO Archived /var/www/html/azgaar/openheim_0.0.2.zip.
+2025-06-19 18:37:19,058 INFO Updated regular.fileupload with passed/active status, version 0.0.1
+2025-06-19 18:46:57,546 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 18:47:00,158 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 18:47:00,217 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 18:47:00,291 INFO SUCCESS: spatial schema created with 01_spatial_schema.sql
+2025-06-19 18:47:00,493 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 18:47:00,958 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 18:47:00,958 INFO Received 21 land polygons
+2025-06-19 18:47:00,972 INFO Created 21 land features (with freshwater holes).
+2025-06-19 18:47:00,985 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:47:01,167 INFO Extracted 1389 river features from SVG.
+2025-06-19 18:47:01,236 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:47:08,441 ERROR Command failed: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+stdout: 
+stderr: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1740.93it/s]
+2025-06-19 18:47:08,441 INFO ERROR: Exception during zip processing: Command failed: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+stdout: 
+stderr: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1740.93it/s]
+2025-06-19 18:49:04,550 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 18:49:06,587 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 18:49:06,645 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 18:49:06,718 INFO SUCCESS: spatial schema created with 01_spatial_schema.sql
+2025-06-19 18:49:06,914 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 18:49:07,372 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 18:49:07,373 INFO Received 21 land polygons
+2025-06-19 18:49:07,387 INFO Created 21 land features (with freshwater holes).
+2025-06-19 18:49:07,400 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:49:07,585 INFO Extracted 1389 river features from SVG.
+2025-06-19 18:49:07,654 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:49:15,395 ERROR Command failed: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+stdout: 
+stderr: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1759.92it/s]
+2025-06-19 18:49:15,395 INFO ERROR: Exception during zip processing: Command failed: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+stdout: 
+stderr: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1759.92it/s]
+2025-06-19 18:49:54,064 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 18:49:57,003 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 18:49:57,055 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 18:49:57,128 INFO SUCCESS: spatial schema created with 01_spatial_schema.sql
+2025-06-19 18:49:57,331 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 18:49:57,802 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 18:49:57,802 INFO Received 21 land polygons
+2025-06-19 18:49:57,816 INFO Created 21 land features (with freshwater holes).
+2025-06-19 18:49:57,829 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:49:58,012 INFO Extracted 1389 river features from SVG.
+2025-06-19 18:49:58,081 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:50:06,255 ERROR Command failed: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+stdout: 
+stderr: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1677.88it/s]
+2025-06-19 18:50:06,255 INFO ERROR: Exception during zip processing: Command failed: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+stdout: 
+stderr: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1677.88it/s]
+2025-06-19 18:52:16,568 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 18:52:23,759 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 18:52:23,816 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 18:52:23,890 INFO SUCCESS: spatial schema created with 01_spatial_schema.sql
+2025-06-19 18:52:24,126 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 18:52:24,586 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 18:52:24,587 INFO Received 21 land polygons
+2025-06-19 18:52:24,601 INFO Created 21 land features (with freshwater holes).
+2025-06-19 18:52:24,613 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:52:24,793 INFO Extracted 1389 river features from SVG.
+2025-06-19 18:52:24,861 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:52:26,667 INFO Cleaned and flipped (if needed): /srv/data-loader/data/cells.geojson
+2025-06-19 18:52:26,690 INFO Cleaned and flipped (if needed): /srv/data-loader/data/markers.geojson
+2025-06-19 18:52:26,708 INFO Cleaned and flipped (if needed): /srv/data-loader/data/routes.geojson
+2025-06-19 18:52:26,721 INFO Cleaned and flipped (if needed): /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:52:26,730 INFO No change needed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:52:26,732 INFO Validation passed: /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 18:52:26,739 INFO Validation passed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 18:52:26,745 INFO Cleaned rivers csv: /srv/data-loader/data/rivers.csv -> /srv/data-loader/data/rivers_cleaned.csv
+2025-06-19 18:52:26,745 INFO Cleaned markers csv: /srv/data-loader/data/markers.csv -> /srv/data-loader/data/markers_cleaned.csv
+2025-06-19 18:52:26,775 INFO SUCCESS: cleaning script 02_extract_and_clean.py executed successfully
+========== Starting ogr2ogr import at Thu Jun 19 06:52:26 PM PDT 2025 ==========
+[INFO] Importing openheim_rivers_cleaned.geojson...
+[INFO] Importing routes.geojson...
+[INFO] Importing cells.geojson...
+[INFO] Importing openheim_land_cleaned.geojson...
+[INFO] Importing openheim_rivers_cleaned.geojson...
+All ogr2ogr imports completed at Thu Jun 19 06:52:28 PM PDT 2025.
+2025-06-19 18:52:28,200 INFO SUCCESS: ogr2ogr import script 03_ogr2ogr_import.sh executed successfully
+2025-06-19 18:52:28,373 INFO SUCCESS: bulk attribute import with 04_bulk_attribute_import.sql
+2025-06-19 18:52:28,373 INFO All steps completed successfully.
+2025-06-19 18:52:28,374 INFO Archived /var/www/html/azgaar/openheim_0.0.2.zip.
+2025-06-19 18:52:28,381 INFO Updated regular.fileupload with passed/active status, version 0.0.2
+2025-06-19 18:52:55,393 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 18:52:55,393 INFO Watching folder: -test for openheim.zip ...
+2025-06-19 19:07:30,410 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 19:07:30,411 INFO Watching folder: -test for openheim.zip ...
+2025-06-19 19:09:09,833 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 19:09:09,833 INFO Watching folder: -test for openheim.zip ...
+2025-06-19 19:11:24,675 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 19:11:24,675 INFO Watching folder: -test for openheim.zip ...
+2025-06-19 19:11:24,675 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:11:34,675 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:11:44,676 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:11:54,677 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:12:04,677 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:12:14,678 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:12:24,678 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:12:34,679 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:12:44,679 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:12:54,680 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:13:04,680 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:13:14,681 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:13:24,682 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:13:34,682 INFO Polling for file: -test/openheim.zip
+2025-06-19 19:13:42,920 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 19:13:42,921 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 19:13:42,921 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:13:42,926 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 19:13:42,930 INFO ERROR: Exception during zip processing: column "path" of relation "FileUpload" does not exist
+LINE 2: ...        INSERT INTO regular."FileUpload" ("name", "path", "v...
+                                                             ^
+
+2025-06-19 19:13:52,930 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:14:02,930 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:14:12,931 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:14:22,932 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:14:32,932 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:14:42,933 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:14:52,934 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:15:02,934 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:15:12,935 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:15:22,935 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:15:32,936 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:15:42,937 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:15:52,937 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:16:02,938 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:16:12,939 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:16:22,939 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:16:32,939 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:16:42,940 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:16:52,940 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:17:02,941 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:17:12,941 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:17:22,941 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:17:32,942 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:17:42,942 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:17:52,943 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:18:02,943 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:18:12,944 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:18:22,945 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:18:32,946 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:18:42,946 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:18:52,947 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:19:02,947 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:19:12,948 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:19:22,949 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:19:32,949 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:19:42,950 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:19:52,950 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:20:02,951 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:20:12,952 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:20:28,840 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 19:20:28,840 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 19:20:28,840 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:20:38,841 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:20:38,861 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 19:20:38,865 INFO ERROR: Exception during zip processing: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+2025-06-19 19:20:48,865 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:20:58,866 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:21:08,867 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:21:18,868 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:21:28,868 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:21:38,869 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:21:48,869 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:21:58,870 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:22:08,870 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:22:18,871 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:22:18,888 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 19:22:18,948 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 19:22:19,049 INFO SUCCESS: spatial schema created with 01_spatial_schema.sql
+2025-06-19 19:22:19,448 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 19:22:19,918 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 19:22:19,919 INFO Received 21 land polygons
+2025-06-19 19:22:19,935 INFO Created 21 land features (with freshwater holes).
+2025-06-19 19:22:19,947 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:22:20,130 INFO Extracted 1389 river features from SVG.
+2025-06-19 19:22:20,198 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:22:21,994 INFO Cleaned and flipped (if needed): /srv/data-loader/data/cells.geojson
+2025-06-19 19:22:22,016 INFO Cleaned and flipped (if needed): /srv/data-loader/data/markers.geojson
+2025-06-19 19:22:22,034 INFO Cleaned and flipped (if needed): /srv/data-loader/data/routes.geojson
+2025-06-19 19:22:22,047 INFO Cleaned and flipped (if needed): /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:22:22,055 INFO No change needed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:22:22,058 INFO Validation passed: /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:22:22,068 INFO Validation passed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:22:22,073 INFO Cleaned rivers csv: /srv/data-loader/data/rivers.csv -> /srv/data-loader/data/rivers_cleaned.csv
+2025-06-19 19:22:22,074 INFO Cleaned markers csv: /srv/data-loader/data/markers.csv -> /srv/data-loader/data/markers_cleaned.csv
+2025-06-19 19:22:22,111 INFO SUCCESS: cleaning script 02_extract_and_clean.py executed successfully
+========== Starting ogr2ogr import at Thu Jun 19 07:22:22 PM PDT 2025 ==========
+[INFO] Importing openheim_rivers_cleaned.geojson...
+[INFO] Importing routes.geojson...
+[INFO] Importing cells.geojson...
+[INFO] Importing openheim_land_cleaned.geojson...
+[INFO] Importing openheim_rivers_cleaned.geojson...
+All ogr2ogr imports completed at Thu Jun 19 07:22:23 PM PDT 2025.
+2025-06-19 19:22:23,594 INFO SUCCESS: ogr2ogr import script 03_ogr2ogr_import.sh executed successfully
+2025-06-19 19:22:23,764 INFO SUCCESS: bulk attribute import with 04_bulk_attribute_import.sql
+2025-06-19 19:22:23,764 INFO All steps completed successfully.
+2025-06-19 19:22:23,764 INFO Archived /var/www/html/azgaar/openheim_0.0.2.zip.
+2025-06-19 19:22:23,772 INFO Updated regular.fileupload with passed/active status, version 0.0.2
+2025-06-19 19:22:33,772 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:22:43,773 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:22:53,773 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:22:53,785 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 19:22:53,846 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 19:22:53,924 INFO SUCCESS: spatial schema created with 01_spatial_schema.sql
+2025-06-19 19:22:54,152 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 19:22:54,612 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 19:22:54,612 INFO Received 21 land polygons
+2025-06-19 19:22:54,627 INFO Created 21 land features (with freshwater holes).
+2025-06-19 19:22:54,639 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:22:54,821 INFO Extracted 1389 river features from SVG.
+2025-06-19 19:22:54,889 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:22:56,703 INFO Cleaned and flipped (if needed): /srv/data-loader/data/cells.geojson
+2025-06-19 19:22:56,729 INFO Cleaned and flipped (if needed): /srv/data-loader/data/markers.geojson
+2025-06-19 19:22:56,747 INFO Cleaned and flipped (if needed): /srv/data-loader/data/routes.geojson
+2025-06-19 19:22:56,761 INFO Cleaned and flipped (if needed): /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:22:56,770 INFO No change needed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:22:56,772 INFO Validation passed: /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:22:56,782 INFO Validation passed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:22:56,788 INFO Cleaned rivers csv: /srv/data-loader/data/rivers.csv -> /srv/data-loader/data/rivers_cleaned.csv
+2025-06-19 19:22:56,788 INFO Cleaned markers csv: /srv/data-loader/data/markers.csv -> /srv/data-loader/data/markers_cleaned.csv
+2025-06-19 19:22:56,821 INFO SUCCESS: cleaning script 02_extract_and_clean.py executed successfully
+========== Starting ogr2ogr import at Thu Jun 19 07:22:56 PM PDT 2025 ==========
+[INFO] Importing openheim_rivers_cleaned.geojson...
+[INFO] Importing routes.geojson...
+[INFO] Importing cells.geojson...
+[INFO] Importing openheim_land_cleaned.geojson...
+[INFO] Importing openheim_rivers_cleaned.geojson...
+All ogr2ogr imports completed at Thu Jun 19 07:22:58 PM PDT 2025.
+2025-06-19 19:22:58,251 INFO SUCCESS: ogr2ogr import script 03_ogr2ogr_import.sh executed successfully
+2025-06-19 19:22:58,432 INFO SUCCESS: bulk attribute import with 04_bulk_attribute_import.sql
+2025-06-19 19:22:58,432 INFO All steps completed successfully.
+2025-06-19 19:22:58,433 INFO Archived /var/www/html/azgaar/openheim_0.0.2.zip.
+2025-06-19 19:22:58,441 INFO Updated regular.fileupload with passed/active status, version 0.0.2
+2025-06-19 19:23:08,442 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:23:18,442 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:23:28,443 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:23:38,444 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:23:48,445 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:23:58,446 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:24:08,446 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:24:18,447 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:24:28,447 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:24:38,448 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:24:48,449 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:24:58,449 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:25:08,450 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:25:18,450 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:25:28,451 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:25:38,451 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:25:48,452 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:25:58,453 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:26:08,454 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:26:18,454 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:26:28,455 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:26:38,455 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:26:48,456 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:26:58,456 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:27:08,456 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:27:18,457 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:27:28,458 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:27:38,458 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:27:48,459 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:27:58,459 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:39:34,058 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 19:39:34,058 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 19:39:34,058 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:39:44,058 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:39:44,068 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 19:39:44,072 INFO ERROR: Exception during zip processing: null value in column "baseName" of relation "FileUpload" violates not-null constraint
+DETAIL:  Failing row contains (1, openheim.zip, 0.0.2, uploaded, 2025-06-19 19:39:44.069, /var/www/html/azgaar/openheim.zip, null).
+
+2025-06-19 19:39:54,073 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:40:04,073 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:40:14,074 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:40:24,074 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:40:34,075 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:40:44,075 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:40:58,127 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 19:40:58,127 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 19:40:58,127 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:41:08,127 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:41:08,152 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.2.zip
+2025-06-19 19:41:08,220 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 19:41:08,329 INFO SUCCESS: spatial schema created with 01_spatial_schema.sql
+2025-06-19 19:41:08,731 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 19:41:09,202 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 19:41:09,204 INFO Received 21 land polygons
+2025-06-19 19:41:09,220 INFO Created 21 land features (with freshwater holes).
+2025-06-19 19:41:09,232 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:41:09,414 INFO Extracted 1389 river features from SVG.
+2025-06-19 19:41:09,483 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:41:11,256 INFO Cleaned and flipped (if needed): /srv/data-loader/data/cells.geojson
+2025-06-19 19:41:11,282 INFO Cleaned and flipped (if needed): /srv/data-loader/data/markers.geojson
+2025-06-19 19:41:11,300 INFO Cleaned and flipped (if needed): /srv/data-loader/data/routes.geojson
+2025-06-19 19:41:11,313 INFO Cleaned and flipped (if needed): /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:41:11,321 INFO No change needed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:41:11,323 INFO Validation passed: /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:41:11,330 INFO Validation passed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:41:11,336 INFO Cleaned rivers csv: /srv/data-loader/data/rivers.csv -> /srv/data-loader/data/rivers_cleaned.csv
+2025-06-19 19:41:11,336 INFO Cleaned markers csv: /srv/data-loader/data/markers.csv -> /srv/data-loader/data/markers_cleaned.csv
+2025-06-19 19:41:11,369 INFO SUCCESS: cleaning script 02_extract_and_clean.py executed successfully
+========== Starting ogr2ogr import at Thu Jun 19 07:41:11 PM PDT 2025 ==========
+[INFO] Importing openheim_rivers_cleaned.geojson...
+[INFO] Importing routes.geojson...
+[INFO] Importing cells.geojson...
+[INFO] Importing openheim_land_cleaned.geojson...
+[INFO] Importing openheim_rivers_cleaned.geojson...
+All ogr2ogr imports completed at Thu Jun 19 07:41:12 PM PDT 2025.
+2025-06-19 19:41:12,851 INFO SUCCESS: ogr2ogr import script 03_ogr2ogr_import.sh executed successfully
+2025-06-19 19:41:13,021 INFO SUCCESS: bulk attribute import with 04_bulk_attribute_import.sql
+2025-06-19 19:41:13,021 INFO All steps completed successfully.
+2025-06-19 19:41:13,022 INFO Archived /var/www/html/azgaar/openheim_0.0.2.zip.
+2025-06-19 19:41:13,030 INFO ERROR: Failed to update regular.fileupload DB on archive: null value in column "path" of relation "FileUpload" violates not-null constraint
+DETAIL:  Failing row contains (3, openheim_0.0.2.zip, 0.0.2, active, 2025-06-19 19:41:13.022, null, null).
+
+2025-06-19 19:41:23,030 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:41:33,031 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:41:43,031 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:41:53,032 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:42:03,032 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:42:13,033 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:42:23,035 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:42:33,036 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:42:43,037 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:42:53,038 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:43:03,039 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:43:13,039 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:43:23,040 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:43:33,040 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:43:43,041 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:43:53,042 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:44:03,042 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:44:13,043 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:44:23,043 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:44:33,044 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:44:43,045 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:44:53,045 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:45:03,046 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:45:13,047 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:45:23,047 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:45:33,048 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:45:43,048 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:45:53,049 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:46:03,050 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:46:13,050 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:46:23,051 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:46:33,052 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:46:43,052 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:46:53,053 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:47:03,053 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:47:13,054 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:47:23,055 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:47:33,055 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:47:42,785 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 19:47:42,785 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 19:47:42,785 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:47:52,785 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:47:52,801 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.3.zip
+2025-06-19 19:47:52,862 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 19:47:52,968 INFO SUCCESS: spatial schema created with 01_spatial_schema.sql
+2025-06-19 19:47:53,326 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 19:47:53,770 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 19:47:53,772 INFO Received 21 land polygons
+2025-06-19 19:47:53,786 INFO Created 21 land features (with freshwater holes).
+2025-06-19 19:47:53,799 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:47:53,974 INFO Extracted 1389 river features from SVG.
+2025-06-19 19:47:54,042 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:48:01,993 ERROR Command failed: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+stdout: 
+stderr: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1834.93it/s]
+2025-06-19 19:48:01,993 INFO ERROR: Exception during zip processing: Command failed: /home/greg/openrpg-ca/azgaar/venv/bin/python3 02_extract_and_clean.py
+stdout: 
+stderr: Processing land polygons:   0%|          | 0/21 [00:00<?, ?it/s]
+Processing land polygons: 100%|██████████| 21/21 [00:00<00:00, 1834.93it/s]
+2025-06-19 19:48:19,914 INFO Running in TEST MODE — will pre-create FileUpload entry.
+2025-06-19 19:48:19,915 INFO Watching folder: /var/www/html/azgaar for openheim.zip ...
+2025-06-19 19:48:19,915 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:48:19,922 INFO Found and moved file to /var/www/html/azgaar/openheim_0.0.3.zip
+2025-06-19 19:48:19,980 INFO Extracted zip to /srv/data-loader/data
+2025-06-19 19:48:20,052 INFO SUCCESS: spatial schema created with 01_spatial_schema.sql
+2025-06-19 19:48:20,240 INFO Parsing SVG file: /srv/data-loader/data/openheim.svg
+2025-06-19 19:48:20,685 INFO Extracted 21 land polygons and 8 freshwater polygons.
+2025-06-19 19:48:20,686 INFO Received 21 land polygons
+2025-06-19 19:48:20,699 INFO Created 21 land features (with freshwater holes).
+2025-06-19 19:48:20,712 INFO Exported land features to /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:48:20,882 INFO Extracted 1389 river features from SVG.
+2025-06-19 19:48:20,947 INFO Exported rivers to /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:48:22,751 INFO Cleaned and flipped (if needed): /srv/data-loader/data/cells.geojson
+2025-06-19 19:48:22,774 INFO Cleaned and flipped (if needed): /srv/data-loader/data/markers.geojson
+2025-06-19 19:48:22,793 INFO Cleaned and flipped (if needed): /srv/data-loader/data/routes.geojson
+2025-06-19 19:48:22,806 INFO Cleaned and flipped (if needed): /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:48:22,814 INFO No change needed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:48:22,816 INFO Validation passed: /srv/data-loader/data/openheim_land_cleaned.geojson
+2025-06-19 19:48:22,823 INFO Validation passed: /srv/data-loader/data/openheim_rivers_cleaned.geojson
+2025-06-19 19:48:22,828 INFO Cleaned rivers csv: /srv/data-loader/data/rivers.csv -> /srv/data-loader/data/rivers_cleaned.csv
+2025-06-19 19:48:22,829 INFO Cleaned markers csv: /srv/data-loader/data/markers.csv -> /srv/data-loader/data/markers_cleaned.csv
+2025-06-19 19:48:22,864 INFO SUCCESS: cleaning script 02_extract_and_clean.py executed successfully
+========== Starting ogr2ogr import at Thu Jun 19 07:48:22 PM PDT 2025 ==========
+[INFO] Importing openheim_rivers_cleaned.geojson...
+[INFO] Importing routes.geojson...
+[INFO] Importing cells.geojson...
+[INFO] Importing openheim_land_cleaned.geojson...
+[INFO] Importing openheim_rivers_cleaned.geojson...
+All ogr2ogr imports completed at Thu Jun 19 07:48:24 PM PDT 2025.
+2025-06-19 19:48:24,315 INFO SUCCESS: ogr2ogr import script 03_ogr2ogr_import.sh executed successfully
+2025-06-19 19:48:24,487 INFO SUCCESS: bulk attribute import with 04_bulk_attribute_import.sql
+2025-06-19 19:48:24,487 INFO All steps completed successfully.
+2025-06-19 19:48:24,487 INFO Archived /var/www/html/azgaar/openheim_0.0.3.zip.
+2025-06-19 19:48:24,495 INFO ERROR: Failed to update regular.fileupload DB on archive: null value in column "baseName" of relation "FileUpload" violates not-null constraint
+DETAIL:  Failing row contains (6, openheim_0.0.3.zip, 0.0.3, active, 2025-06-19 19:48:24.488, /srv/data-loader/processed_zips/openheim_0.0.3.zip, null).
+
+2025-06-19 19:48:34,495 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:48:44,496 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:48:54,497 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:49:04,498 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:49:14,498 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:49:24,499 INFO Polling for file: /var/www/html/azgaar/openheim.zip
+2025-06-19 19:49:34,499 INFO Polling for file: /var/www/html/azgaar/openheim.zip

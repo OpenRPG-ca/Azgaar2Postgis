@@ -1,17 +1,19 @@
 import xml.etree.ElementTree as ET
-from svgpathtools import parse_path
-import geojson
-from shapely.geometry import Polygon, mapping, LineString
-from shapely.ops import unary_union
-from tqdm import tqdm
+import logging
 import re
 import os
 import json
 import sys
 import csv
-import re
+import geojson
+from svgpathtools import parse_path
+from shapely.geometry import Polygon, mapping, LineString
+from shapely.ops import unary_union
+from tqdm import tqdm
 from typing import Optional
-import logging
+from geom_utils import *
+from shapely.errors import TopologicalError
+
 
 # ===========================
 # Logging Configuration
@@ -47,93 +49,6 @@ FILES_TO_CLEAN = [
 ]
 
 # ===========================
-# Utility Functions
-# ===========================
-
-
-def svg_path_to_coords(d_str):
-    path = parse_path(d_str)
-    coords = []
-    for seg in path:
-        if hasattr(seg, "start"):
-            coords.append((seg.start.real, seg.start.imag))
-        if hasattr(seg, "end"):
-            coords.append((seg.end.real, seg.end.imag))
-    return coords
-
-
-def deduplicate(coords):
-    if not coords:
-        return coords
-    deduped = [coords[0]]
-    for pt in coords[1:]:
-        if pt != deduped[-1]:
-            deduped.append(pt)
-    return deduped
-
-
-def ensure_closed(coords):
-    if coords and coords[0] != coords[-1]:
-        coords.append(coords[0])
-    return coords
-
-
-def flip_y(coords):
-    return [(x, SVG_HEIGHT - y) for x, y in coords]
-
-
-def flip_y_coords_in_feature(feature):
-    geom = feature.get("geometry")
-    if not geom or "coordinates" not in geom:
-        return
-
-    coords = geom["coordinates"]
-    geom_type = geom.get("type")
-
-    if geom_type == "Point":
-        x, y = coords
-        geom["coordinates"] = (x, SVG_HEIGHT - y)
-    elif geom_type == "LineString":
-        geom["coordinates"] = flip_y(coords)
-    elif geom_type == "Polygon":
-        geom["coordinates"] = [flip_y(ring) for ring in coords]
-    elif geom_type == "MultiLineString":
-        geom["coordinates"] = [flip_y(line) for line in coords]
-    elif geom_type == "MultiPolygon":
-        geom["coordinates"] = [[flip_y(ring) for ring in poly] for poly in coords]
-
-
-def strip_river_prefix_and_make_int(feature_id):
-    if isinstance(feature_id, str) and feature_id.startswith("river"):
-        number_part = feature_id.replace("river", "")
-        if number_part.isdigit():
-            return int(number_part)
-    return feature_id
-
-
-def strip_marker_prefix_and_make_int(feature_id):
-    """
-    If feature_id is a string starting with 'marker' followed by digits,
-    returns the integer part. Otherwise, returns feature_id unchanged.
-    """
-    if isinstance(feature_id, str) and feature_id.startswith("marker"):
-        number_part = feature_id.replace("marker", "")
-        if number_part.isdigit():
-            return int(number_part)
-    return feature_id
-
-
-def clean_id(val):
-    if isinstance(val, str):
-        m = re.search(r"(\d+)$", val)
-        if m:
-            return int(m.group(1))
-    if isinstance(val, int):
-        return val
-    return None
-
-
-# ===========================
 # Core Data Extraction Functions
 # ===========================
 
@@ -147,7 +62,7 @@ def extract_river_paths(root):
             continue
         coords = svg_path_to_coords(d)
         coords = deduplicate(coords)
-        coords = flip_y(coords)
+        coords = flip_y(coords, SVG_HEIGHT)
         if len(coords) > 1:
             line = LineString(coords)
             river_id = strip_river_prefix_and_make_int(path_id)
@@ -189,7 +104,7 @@ def extract_land_and_freshwater(root):
         coords = svg_path_to_coords(d)
         coords = deduplicate(coords)
         coords = ensure_closed(coords)
-        coords = flip_y(coords)
+        coords = flip_y(coords, SVG_HEIGHT)
         if len(coords) > 3:
             poly = Polygon(coords)
             if not poly.is_valid:
@@ -205,12 +120,22 @@ def extract_land_and_freshwater(root):
 
 
 def make_land_features(land_polys, freshwater_polys):
-    all_freshwater = (
-        unary_union([poly for _, poly in freshwater_polys])
-        if freshwater_polys
-        else None
-    )
+    try:
+        all_freshwater = (
+            unary_union([poly for _, poly in freshwater_polys])
+            if freshwater_polys
+            else None
+        )
+    except TopologicalError as e:
+        logger.error(f"Failed to union freshwater polys: {e}")
+        all_freshwater = None
+
     land_features = []
+    logger.info(f"Received {len(land_polys)} land polygons")
+    assert all(
+        isinstance(x, tuple) and len(x) == 2 for x in land_polys
+    ), "Malformed land_polys"
+
     for land_id, land_poly in tqdm(land_polys, desc="Processing land polygons"):
         if all_freshwater:
             land_with_holes = land_poly.difference(all_freshwater)
@@ -262,7 +187,7 @@ def clean_file(infile):
 
         # Flip Y coordinates for these types
         if any(key in infile for key in ["markers", "routes", "cells"]):
-            flip_y_coords_in_feature(feat)
+            flip_y_coords_in_feature(feat, SVG_HEIGHT)
             changed = True
 
     if changed:
@@ -305,6 +230,8 @@ def clean_markers_csv(input_csv, output_csv):
     ) as outfile:
         reader = csv.DictReader(infile)
         fieldnames = reader.fieldnames
+        if fieldnames is None:
+            raise ValueError("fieldnames must not be None")
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
         writer.writeheader()
         for row in reader:
@@ -344,6 +271,8 @@ def clean_rivers_csv(input_file: str, output_file: str):
 
         reader = csv.DictReader(infile)
         fieldnames = reader.fieldnames
+        if fieldnames is None:
+            raise ValueError("fieldnames must not be None")
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
         writer.writeheader()
 
@@ -397,10 +326,15 @@ def main():
             os.path.join(DATA_DIR, "markers_cleaned.csv"),
         )
 
+        print("Cleaning completed successfully.")
+        return 0
+
     except Exception as e:
         logger.exception("Fatal error during extract_and_clean execution")
-        sys.exit(1)
+        print(f"ERROR in cleaning: {e}", file=sys.stderr)
+        print("Returning 1 from main()")
+        return 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

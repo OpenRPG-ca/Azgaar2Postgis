@@ -3,3 +3,4 @@ geojson
 shapely
 tqdm
 python-dotenv
+psycopg2-binary
